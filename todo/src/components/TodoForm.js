@@ -1,10 +1,10 @@
 import React, {useState, useReducer} from 'react';
-import {initialState, reducer} from './reducers/reducer';
+// import {initialState, reducer} from '../reducers/reducer';
 import '../App.css';
 
 function TodoForm (props) {
 
-    const [initialState, dispatch] = useReducer(reducer, initialState);
+    // const [state, dispatch] = useReducer(reducer, initialState);
     const [newItem, setNewItem] = useState('');
 
     const changeHandler = e => {
@@ -13,26 +13,30 @@ function TodoForm (props) {
 
     const submitHandler = e => {
         e.preventDefault();
-        props.addNewToDo(newItem);
+        props.addTodo(newItem);
         setNewItem('');
     }
 
         return (
-            <div>
+            <div>    
                 <form onSubmit={submitHandler}>
-                    
                     <input 
                         type='text' 
                         name='item' 
                         placeholder='What do you need to do?' 
                         value={newItem} 
-                        onChange={changeHandler}>
+                        onChange={changeHandler}
+                        >
                     </input>
                     
                     <div className='buttonDiv'>
-                        <button className='button' type='submit'>Add to List</button>
+                        <button 
+                            className='button' 
+                            type='submit' 
+                            >
+                            Add to List
+                        </button>
                     </div>
-
                 </form>
             </div>
         )
